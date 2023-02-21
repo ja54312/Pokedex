@@ -2,11 +2,11 @@ import { Card } from 'antd'
 import { StarOutlined } from '@ant-design/icons';
 
 
-const PokeCard = ({ name }) => {
+const PokeCard = ({ name ,image}) => {
   return (
     <Card
       title={name}
-      cover={<img src='https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/shiny/132.png' alt='ditto' />}
+      cover={<img src={image} alt={name} />}
       extra={<StarOutlined />}
     >
       <Card.Meta
