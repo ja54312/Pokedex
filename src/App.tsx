@@ -9,11 +9,10 @@ import logo from "./assets/logo.svg";
 import "./App.css";
 
 function App() {
-  const pokemons = useSelector((state) =>
-    state.getIn(['data', 'pokemons'], shallowEqual)
-  ).toJS();
+  const pokemons = useSelector((state) => state.data.pokemons, shallowEqual);
 
-  const loading = useSelector((state) => state.getIn(['ui', 'loading']));
+  const loading = useSelector((state) => state.ui.loading);
+
   const dispatch = useDispatch();
 
   useEffect(() => {
