@@ -1,11 +1,10 @@
 import { useEffect } from "react";
-import { shallowEqual, useDispatch, useSelector } from "react-redux";
 import { Col ,Spin} from "antd";
+import { shallowEqual, useDispatch, useSelector } from "react-redux";
 import Searcher from "./components/Searcher/Searcher";
 import PokeList from "./components/PokeList/PokeList";
-import { getPokemons } from "./api";
-import { getPokemonsWithDetails, setLoading } from "./actions";
 import logo from "./assets/logo.svg";
+import { fetchPokemonsWithDetails } from "./slices/DataSlice";
 import "./App.css";
 
 function App() {
@@ -16,14 +15,7 @@ function App() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    const fetchPokemons = async () => {
-      dispatch(setLoading(true));
-      const pokemonsRes = await getPokemons();
-      dispatch(getPokemonsWithDetails(pokemonsRes));
-      dispatch(setLoading(false));
-    };
-
-    fetchPokemons();
+    dispatch(fetchPokemonsWithDetails());
   }, []);
 
   return (
